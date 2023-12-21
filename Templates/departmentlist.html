@@ -1,0 +1,33 @@
+{%extends 'master.html'%}
+  {% load static %}
+  {% load crispy_forms_tags %}
+{%block content%}
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">no.</th>
+          <th scope="col">departmentId</th>
+          <th scope="col">departmentname</th>
+          <th scope="col">salaryscale</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for Department in list %}
+          <tr>
+            <th scope="row">{{Department.id}}</th>
+            <td>{{Department.departmentid}}</td>
+            <td>{{Department.departmentname}}</td>
+            <td>{{Department.salaryscale}}</td>
+            <td>
+              <a href="{% url 'EditDepartmentPage' Department.id %}">Edit</a>
+              <a href="{% url 'DeleteDepartmentPage' Department.id %}"onclick='return confirm("Are you sure you intend to delete")'>Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      
+
+{%endblock content%}

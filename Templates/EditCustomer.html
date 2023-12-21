@@ -1,0 +1,19 @@
+{%extends 'master.html'%}
+  {% load static %}
+  {% load crispy_forms_tags %}
+{%block content%}
+  
+    <h1>Edit - {{Customer.firstname}}</h1>
+
+    <div class="container">
+        <form method="POST">
+            {%csrf_token %}
+            {{form|crispy}}
+
+            <input type="submit" class="btn btn-primary">
+
+        </form>
+
+    </div>
+    {% endblock content %}
+ 

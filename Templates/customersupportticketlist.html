@@ -1,0 +1,35 @@
+
+{% extends "master.html" %}
+  {% load static %}
+  {% load crispy_forms_tags %}
+  {% block content %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">no.</th>
+          <th scope="col">ticketId</th>
+          <th scope="col">customerId</th>
+          <th scope="col">employeeId</th>
+          <th scope="col">customerIssueDescription</th>
+          <th scope="col">status</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for CustomerSupportTicket in list %}
+          <tr>
+            <th scope="row">{{CustomerSupportTicket.id}}</th>
+            <td>{{CustomerSupportTicket.ticketId}}</td>
+            <td>{{CustomerSupportTicket.customerId}}</td>
+            <td>{{CustomerSupportTicket.employeeId}}</td>
+            <td>{{CustomerSupportTicket.customerIssueDescription}}</td>
+            <td>{{CustomerSupportTicket.status}}</td>
+          </tr>
+          <td>
+            <a href="{% url 'EditCustomerSupportTicketPage' CustomerSupportTicket.id %}">Edit</a>
+            <a href="{% url 'DeleteSupportTicketPage' CustomerSupportTicket.id %}"onclick='return confirm("Are you sure you intend to delete")'>Delete</a>
+          </td>
+        {% endfor %}
+        </tbody>
+      </table>
+      {% endblock content %}

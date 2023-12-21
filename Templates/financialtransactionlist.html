@@ -1,0 +1,36 @@
+{% extends "master.html" %}
+
+  {% load static %}
+  {% load crispy_forms_tags %}
+  {% block content %}
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">no.</th>
+          <th scope="col">transactionId</th>
+          <th scope="col">date</th>
+          <th scope="col">amount</th>
+          <th scope="col">description</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for Financialtransaction in list %}
+          <tr>
+            <th scope="row">{{Financialtransaction.id}}</th>
+            <td>{{Financialtransaction.transactionId}}</td>
+            <td>{{Financialtransaction.date}}</td>
+            <td>{{Financialtransaction.amount}}</td>
+            <td>{{Financialtransaction.description}}</td>
+          </tr>
+          <td>
+            <a href="{% url 'EditFinancialtransactionPage' Financialtransaction.id %}">Edit</a>
+            <a href="{% url 'DeleteFinancialtransactionPage' Financialtransaction.id %}"onclick='return confirm("Are you sure you intend to delete")'>Delete</a>
+          </td>
+          
+        {% endfor %}
+        </tbody>
+      </table>
+      
+      {% endblock content %}

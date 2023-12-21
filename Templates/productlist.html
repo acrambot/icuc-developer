@@ -1,0 +1,34 @@
+{% extends "master.html" %}
+
+  {% load static %}
+  {% load crispy_forms_tags %}
+  {% block content %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">no.</th>
+          <th scope="col">productId</th>
+          <th scope="col">productname</th>
+          <th scope="col">stockquantity</th>
+          <th scope="col">unitprice</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for Product in list %}
+          <tr>
+            <th scope="row">{{Product.id}}</th>
+            <td>{{Product.productId}}</td>
+            <td>{{Product.productname}}</td>
+            <td>{{Product.stockquantity}}</td>
+            <td>{{Product.unitprice}}</td>
+          </tr>
+          <td>
+            <a href="{% url 'EditProductPage' Product.id %}">Edit</a>
+            <a href="{% url 'DeleteProductPage' Product.id %}"onclick='return confirm("Are you sure you intend to delete")'>Delete</a>
+          </td>
+        {% endfor %}
+        </tbody>
+      </table>
+      
+      {% endblock content %}

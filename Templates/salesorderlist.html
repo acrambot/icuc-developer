@@ -1,0 +1,36 @@
+{% extends "master.html" %}
+
+  {% load static %}
+  {% load crispy_forms_tags %}
+  {% block content %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">no.</th>
+          <th scope="col">orderId</th>
+          <th scope="col">customerId</th>
+          <th scope="col">employeeId</th>
+          <th scope="col">orderdate</th>
+          <th scope="col">totalamount</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for Salesorder in list %}
+          <tr>
+            <th scope="row">{{Salesorder.id}}</th>
+            <td>{{Salesorder.orderId}}</td>
+            <td>{{Salesorder.customerId}}</td>
+            <td>{{Salesorder.employeeId}}</td>
+            <td>{{Salesorder.orderdate}}</td>
+            <td>{{Salesorder.totalamount}}</td>
+          </tr>
+          <td>
+            <a href="{% url 'EditSalesorderPage' Salesorder.id %}">Edit</a>
+            <a href="{% url 'DeleteSalesorderPage' Salesorder.id %}"onclick='return confirm("Are you sure you intend to delete")'>Delete</a>
+          </td>
+        {% endfor %}
+        </tbody>
+      </table>
+      
+      {% endblock content %}
