@@ -1,2 +1,1 @@
-# icuc-developer
- 
+# icuc-django
